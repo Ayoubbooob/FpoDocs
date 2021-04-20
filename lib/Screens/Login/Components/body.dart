@@ -23,6 +23,19 @@ class Body extends StatelessWidget {
           children: <Widget>[
             Text('LOGIN', style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: size.height * 0.02),
+            Container(height: 100, width: 100,
+             decoration: BoxDecoration(
+                        color:kPrimaryColor,
+                        
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [BoxShadow(color:Colors.black , blurRadius:3 , spreadRadius:0.1)]
+              ),
+            child:Icon(Icons.person, size: 50 , color:Colors.white) ,
+            ),
+
+            SizedBox(height: size.height * 0.04),
+    
+
             //SvgPicture.asset("assets/icons/login.svg",height: size.height * 0.25),
             SizedBox(height: size.height * 0.02),
             RoundedInputField(hintText: "Email", onChanged: (value) {}),

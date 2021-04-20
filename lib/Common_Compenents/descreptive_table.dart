@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_docs_fpo/constants.dart';
-import 'package:gestion_docs_fpo/fonts/my_flutter_app_icons.dart';
+// import 'package:gestion_docs_fpo/fonts/my_flutter_app_icons.dart';
 
 class DescriptiveTable extends StatelessWidget {
   @override
