@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_docs_fpo/constants.dart';
-import 'package:gestion_docs_fpo/fonts/my_flutter_app_icons.dart';
+// import 'package:gestion_docs_fpo/fonts/my_flutter_app_icons.dart';
 
 class DescriptiveTable extends StatelessWidget {
   @override
@@ -34,7 +34,7 @@ class DescriptiveTable extends StatelessWidget {
               children: [
                 SizedBox(height: 7.0),
                 Icon(Icons.lock, color: kPrimaryColor),
-                Text("Password",
+                Text("Mot de passe",
                     style: TextStyle(color: Colors.black),
                     textAlign: TextAlign.center),
                 SizedBox(height: 7.0),

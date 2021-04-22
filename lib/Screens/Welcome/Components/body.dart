@@ -17,7 +17,7 @@ class Body extends StatelessWidget {
         children: <Widget>[
           Text(
             'BIENVENUE EN FPODOCS',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold ,fontSize: 20, color: Colors.black54),
           ),
           SizedBox(height: size.height * 0.02),
           SvgPicture.asset("assets/icons/docs.svg", height: size.height * 0.4),
@@ -32,7 +32,11 @@ class Body extends StatelessWidget {
             text: 'J\'ai pas de compte',
             color: kPrimaryLightColor,
             textColor: Colors.black,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                      .pushReplacementNamed("formulaire");
+
+            },
           ),
         ],
       ),
