@@ -34,7 +34,7 @@ class DescriptiveTable extends StatelessWidget {
               children: [
                 SizedBox(height: 7.0),
                 Icon(Icons.lock, color: kPrimaryColor),
-                Text("Password",
+                Text("Mot de passe",
                     style: TextStyle(color: Colors.black),
                     textAlign: TextAlign.center),
                 SizedBox(height: 7.0),
