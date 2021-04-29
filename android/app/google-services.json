@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "903205903133",
+    "project_id": "fpodocs-7ffe2",
+    "storage_bucket": "fpodocs-7ffe2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903205903133:android:5792c729e3618681b4dff4",
+        "android_client_info": {
+          "package_name": "com.example.gestion_docs_fpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903205903133-jskb8407q5817m1j6kfac8f8ifbji8ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBusPLVQTBbGi0nxTTzt-u0vII7EIbc_TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903205903133-jskb8407q5817m1j6kfac8f8ifbji8ve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
