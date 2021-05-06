@@ -8,25 +8,42 @@ import 'package:gestion_docs_fpo/Common_Compenents/text_field_container.dart';
 import 'package:gestion_docs_fpo/Screens/Login/Components/background.dart';
 import 'package:gestion_docs_fpo/Screens/home/home_page.dart';
 import 'package:gestion_docs_fpo/constants.dart';
+import 'package:gestion_docs_fpo/services/auth.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   Body({
     Key key,
+    @required this.auth,
   }) : super(key: key);
+  final AuthBase auth;
 
-  GlobalKey<FormState> _formkey = GlobalKey();
-  String _email = '', _password = '';
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  @override
+  _BodyState createState() => _BodyState();
+}
 
-  void _submit() {
-    /*final isok = _formkey.currentState.validate();
-    print('ftom isok $isok');
-    if (isok) {
-      return print("email :$_email password : $_password");
-    }*/
-    print('email : ${_emailController.text}, password : ${_passwordController.text}');
+class _BodyState extends State<Body> {
+  final _formkey = GlobalKey<FormState>(); //GlobalKey();
+  String _email = '', _password = '', _error = '';
 
+  //final TextEditingController _emailController = TextEditingController();
+  //final TextEditingController _passwordController = TextEditingController();
+
+  //get _email => _emailController.text;
+  //get _password => _passwordController.text;
+  void _submit() async {
+    {}
+    try {
+      await widget.auth.signInWithEmailAndPassword(_email, _password);
+    } catch (e) {
+      print(e.toString());
+    }
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (context) {
+              return HomePage();
+            }));
   }
 
   @override
@@ -91,27 +108,49 @@ class Body extends StatelessWidget {
                 children: <Widget>[
                   Positioned(
                     child: RoundedInputField(
-                      controller: _emailController,
+                      //controller: _emailController,
                       hintText: "Entrez votre email",
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        setState(() => _email = value);
+                      },
                       icon: Icons.email,
                       label: 'Email',
-                      validator: (text) {
-                        if (text.trim().length == 0) {
-                          return 'le champ est vide';
-                        }
-                        return null;
-                      },
+                      validator: (val) => val.isEmpty
+                          ? "Vous n'avez pas entrez votre email"
+                          : null,
                     ),
                   ),
-                  RoundedPasswordField(onChanged: (value) {}, controller: _passwordController),
+                  RoundedPasswordField(
+                    onChanged: (value) {
+                      setState(() => _password = value);
+                    },
+                    // controller: _passwordController,
+                    validator: (val) => val.isEmpty
+                        ? "Vous n'avez pas entrez votre mot de passe"
+                        : null,
+                  ),
                   SizedBox(height: size.height * 0.02),
                   RoundedButton(
-                      text: 'LOGIN',
-                      color: kPrimaryColor,
-                      textColor: Colors.white,
-                      onPressed: _submit,/*() => _onLoginHomePagePressed(context)*/
-                        ),
+                    text: 'LOGIN',
+                    color: kPrimaryColor,
+                    textColor: Colors.white,
+                    onPressed: () async {
+                      if (_formkey.currentState.validate()) {
+                        try {
+                          dynamic result = await widget.auth.signInWithEmailAndPassword(_email, _password);
+                          if (result == null) {
+                            setState(() =>
+                                _error = 'Vos coordonnées sont invalides');
+                          }
+                        } catch (e) {
+                          print(e.toString());
+                        }
+                      }
+                    }, /*() => _onLoginHomePagePressed(context)*/
+                  ),
+                  SizedBox(height: size.height * 0.02),
+                  Text(_error,
+                      style: TextStyle(color: Colors.red, fontSize: 14.0)),
                   SizedBox(height: size.height * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -147,10 +186,6 @@ class Body extends StatelessWidget {
             fullscreenDialog: true,
             builder: (context) {
               return HomePage();
-            }
-        )
-    );
+            }));
   }
 }
-
-

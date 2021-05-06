@@ -9,19 +9,22 @@ class RoundedPasswordField extends StatelessWidget {
     Key key,
     this.onChanged,
     this.controller,
+    this.validator
     
   }) : super(key: key);
 
   final ValueChanged<String> onChanged;
   final TextEditingController controller;
+  final void Function(String text) validator;
   @override
   Widget build(BuildContext context) {
 
     
     return TextFieldContainer(
       
-       child: TextField(
+       child: TextFormField(
          controller: controller,
+        validator: validator,
         obscureText:true, 
         decoration: InputDecoration(
             hintText: "Entez votre mot de passe",
