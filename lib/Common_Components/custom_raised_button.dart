@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_docs_fpo/constants.dart';
 
-class RoundedButton extends StatelessWidget {
-  const RoundedButton({
+class CustomRaisedButton extends StatelessWidget {
+  CustomRaisedButton({
     Key key,
-    this.text,
     this.color,
-    this.textColor,
     this.onPressed,
+    this.child,
   }) : super(key: key);
-  final String text;
-  final Color color, textColor;
+
+  final Color color;
   final VoidCallback onPressed;
+  final Widget child;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,16 +21,12 @@ class RoundedButton extends StatelessWidget {
       width: size.width * 0.8,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(29),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        child: FlatButton(
+          child: child,
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
           color: color,
-          height: size.height * 0.09,
-          child: TextButton(
-              onPressed: onPressed,
-              child: Text(
-                text,
-                style: TextStyle(color: textColor),
-              )),
+          disabledColor: color,
+          onPressed: onPressed,
         ),
       ),
     );

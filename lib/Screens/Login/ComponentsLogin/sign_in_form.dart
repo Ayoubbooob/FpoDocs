@@ -1,179 +1,137 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:gestion_docs_fpo/Common_Components/descreptive_table.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_button.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_input_field.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_password_field.dart';
 import 'package:gestion_docs_fpo/Screens/Home/home_page.dart';
+import 'package:gestion_docs_fpo/Screens/Login/ComponentsLogin/validator.dart';
+import 'package:gestion_docs_fpo/formulaire/form_screen.dart';
 import 'package:gestion_docs_fpo/services/auth.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 
-class SignInForm extends StatefulWidget {
-
-  final AuthBase auth;
-  const SignInForm({Key key, this.auth}) : super(key: key);
+class SignInFormStateful extends StatefulWidget
+    with EmailAndPasswordValidators {
+  //final AuthBase auth;
+  //SignInForm({Key key, @required this.auth}) : super(key: key);
   @override
-  _SignInFormState createState() => _SignInFormState();
+  _SignInFormStatefulState createState() => _SignInFormStatefulState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+class _SignInFormStatefulState extends State<SignInFormStateful> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  get _email => _emailController.text;
-  get _password => _passwordController.text;
+
+  String get _email => _emailController.text;
+  String get _password => _passwordController.text;
   bool _submitted = false;
+  bool _isLoading = false;
 
   void _submit() async {
+    setState(() {
+      _submitted = true;
+      _isLoading = true;
+    });
     try {
-      await widget.auth.signInWithEmailAndPassword(_email, _password);
-      Navigator.of(context).pop();
+      final auth = Provider.of<AuthBase>(context);
+      await auth.signInWithEmailAndPassword(_email, _password);
+      _onLoginButtonPressed(context);
     } catch (e) {
       print(e.toString());
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildForm() {
     Size size = MediaQuery.of(context).size;
+    bool submitEnabled = widget.emailValidator.isValid(_email) &&
+        widget.passwordValidator.isValid(_password) &&
+        !_isLoading;
     return Form(
-      key: _formkey,
-      child: ListView(
-        // mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
         children: <Widget>[
-          // Text('LOGIN', style: TextStyle(fontWeight: FontWeight.bold)),
-
-          Container(
-              height: 190,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    Center(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 35),
-                        child: Text(
-                          "LOGIN",
-                          style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                    ),
-
-                    //ICon perssone
-
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black,
-                                blurRadius: 3,
-                                spreadRadius: 0.1)
-                          ]),
-                      child:
-                      Icon(Icons.person, size: 50, color: Colors.white),
-                    )
-                  ],
-                ),
-              )),
-          // SizedBox(height: size.height * 0.01),
-
-          //SvgPicture.asset("assets/icons/login.svg",height: size.height * 0.25),
-          // SizedBox(height: size.height * 0.01),
-          Container(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    Positioned(
-                      child: RoundedInputField(
-                        controller: _emailController,
-                        hintText: "Entrez votre email",
-                        errorText: ,
-                        onChanged: (value) {
-                          setState(() => _email = value);
-                        },
-                        icon: Icons.email,
-                        label: 'Email',
-                        validator: (val) => val.isEmpty
-                            ? "Vous n'avez pas entrez votre email"
-                            : null,
-                      ),
-                    ),
-                    RoundedPasswordField(
-                      onChanged: (value) {
-                        setState(() => _password = value);
-                      },
-                      // controller: _passwordController,
-                      validator: (val) => val.isEmpty
-                          ? "Vous n'avez pas entrez votre mot de passe"
-                          : null,
-                    ),
-                    SizedBox(height: size.height * 0.02),
-                    RoundedButton(
-                      text: 'LOGIN',
-                      color: kPrimaryColor,
-                      textColor: Colors.white,
-                      onPressed: () => _onLoginButtonPressed(context)/*async {
-                        if (_formkey.currentState.validate()) {
-                          try {
-                            //dynamic result = await widget.auth.signInWithEmailAndPassword(_email, _password);
-                            if (result == null) {
-                              setState(() =>
-                              _error = 'Vos coordonnées sont invalides');
-                            }
-                          } catch (e) {
-                            print(e.toString());
-                          }
-                        }
-                      }, () => _onLoginHomePagePressed(context)*/
-                    ),
-                    SizedBox(height: size.height * 0.02),
-                    Text(_error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0)),
-                    SizedBox(height: size.height * 0.02),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Vous n'avez pas du compte ? ",
-                            style: TextStyle(color: kPrimaryColor)),
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed("formulaire");
-                            },
-                            child: Text("cliquer ici",
-                                style: TextStyle(
-                                    color: kPrimaryColor,
-                                    fontWeight: FontWeight.bold)))
-                      ],
-                    ),
-                    SizedBox(height: size.height * 0.02),
-                    DescriptiveTable(),
-                  ],
-                ),
-              )),
+          Positioned(
+            child: _buildEmailTextField(),
+          ),
+          Positioned(
+            child: _buildPasswordTextField(),
+          ),
+          SizedBox(height: size.height * 0.02),
+          RoundedButton(
+              text: 'LOGIN',
+              color: kPrimaryColor,
+              textColor: Colors.white,
+              onPressed: () => submitEnabled ? _submit : null),
+          SizedBox(height: size.height * 0.02),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Vous n'avez pas du compte ? ",
+                  style: TextStyle(color: kPrimaryColor)),
+              GestureDetector(
+                  onTap: () => _cliqueIciButton(context),
+                  child: Text("cliquer ici",
+                      style: TextStyle(
+                          color: kPrimaryColor, fontWeight: FontWeight.bold)))
+            ],
+          ),
         ],
       ),
     );
   }
 
-  Future<void> _onLoginButtonPressed(BuildContext context){
-
-
-    Navigator.push(context,
-    MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (context)=> HomePage(),
-    ),
+  RoundedInputField _buildEmailTextField() {
+    bool showErrorText = _submitted && !widget.emailValidator.isValid(_email);
+    return RoundedInputField(
+      controller: _emailController,
+      label: "Email",
+      errorText: showErrorText ? widget.invalidEmailErrorText : null,
+      icon: Icons.email,
+      enabled: _isLoading == false,
+      onChanged: (email) => _updateState(),
     );
+  }
+
+  RoundedPasswordField _buildPasswordTextField() {
+    bool showErrorText =
+        _submitted && !widget.passwordValidator.isValid(_password);
+    return RoundedPasswordField(
+      label: 'Mot De Passe',
+      controller: _passwordController,
+      errorText: showErrorText ? widget.invalidPasswordErrorText : null,
+      enabled: _isLoading == false,
+      onChanged: (password) => _updateState(),
+    );
+  }
+
+  _onLoginButtonPressed(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (context) {
+              return HomePage();
+            }));
+  }
+
+  _cliqueIciButton(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          fullscreenDialog: true,
+          builder: (context) => Formescreen(),
+        ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildForm();
+  }
+
+  void _updateState() {
+    setState(() {});
   }
 }
