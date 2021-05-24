@@ -7,8 +7,6 @@ import 'package:gestion_docs_fpo/formulaire/form_screen.dart';
 import '../../../constants.dart';
 
 class BodyWelcome extends StatelessWidget {
-  //final AuthBase auth;
-  //const BodyWelcome({Key key, this.auth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -48,7 +46,7 @@ class BodyWelcome extends StatelessWidget {
         context,
         MaterialPageRoute<void>(
           fullscreenDialog: true,
-          builder: (context) => LoginScreen(/*auth: auth*/) /*LoginScreen()*/,
+          builder: (context) => LoginScreen() ,
         ));
   }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gestion_docs_fpo/Screens/Home/suivre_demande/empty_demands_page.dart';
 import 'package:gestion_docs_fpo/Screens/Home/models/demand.dart';
 import 'package:gestion_docs_fpo/Screens/Home/suivre_demande/list_items_builder.dart';
 import 'package:gestion_docs_fpo/Screens/Home/suivre_demande/user_demand_design.dart';
@@ -33,14 +32,10 @@ class _SuivreDocScreenState extends State<SuivreDocScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buidAppBar('Mes Demandes'),
-      // AppBar(
-      //   title: Text('Mes demandes'),
-      //   actions: <Widget>[
-      //   ],
-      // ),
       body: _buildContents(context),
     );
   }
+
   AppBar buidAppBar(String title1) {
     return AppBar(
       title: Text(title1,

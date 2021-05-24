@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gestion_docs_fpo/Common_Components/custom_raised_button.dart';
 import 'package:gestion_docs_fpo/Common_Components/descreptive_table.dart';
-import 'package:gestion_docs_fpo/Common_Components/form_submit_button.dart';
 import 'package:gestion_docs_fpo/Common_Components/platform_alert_dialog.dart';
-import 'package:gestion_docs_fpo/Common_Components/platform_exception_alert_dialog.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_button.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_input_field.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_password_field.dart';
-import 'package:gestion_docs_fpo/Screens/Home/home_page.dart';
 import 'package:gestion_docs_fpo/Screens/Login/ComponentsLogin/sign_in_bloc.dart';
 import 'package:gestion_docs_fpo/Screens/Login/ComponentsLogin/sign_in_model.dart';
 import 'package:gestion_docs_fpo/formulaire/form_screen.dart';
@@ -63,12 +59,6 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
         defaultActionText: 'Ok',
       ).show(context);
     }
-    /*on PlatformException catch (e) {
-      PlatformExceptionAlertDialog(
-        title: 'Authentification échouée',
-        exception: e,
-      ).show(context);
-    }*/
   }
 
   void _emailEditingComplete(SignInModel model) {
@@ -90,23 +80,11 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
           _buildEmailTextField(model),
           _buildPasswordTextField(model),
           SizedBox(height: size.height * 0.02),
-          /*CustomRaisedButton(
-              text: 'LOGIN',
-              color: kPrimaryColor,
-              textColor: Colors.white,
-              onPressed: model.canSubmit ? _submit : null),
-          */
-          // FormSubmitButton(
-          //   text: 'S\'authentifier',
-          //   onPressed: model.canSubmit ? _submit : null,
-          //   //onPressed: _submit,
-          // ),
           RoundedButton(
               text: "S'authentifier",
               color: kPrimaryColor,
               textColor: Colors.white,
               onPressed: model.canSubmit ? _submit : null),
-
           SizedBox(height: size.height * 0.02),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -137,10 +115,13 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
       errorText: model.emailErrorText,
       icon: Icons.email,
       enabled: model.isLoading == false,
-      validator:  (text) {
+      validator: (text) {
         if (text.trim().length == 0) {
-          return 'le champ est vide';}
-        if(!text.contains("@")){return 'email invalid ';}
+          return 'le champ est vide';
+        }
+        if (!text.contains("@")) {
+          return 'email invalid ';
+        }
         return null;
       },
       textInputAction: TextInputAction.next,
@@ -158,51 +139,6 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
       onChanged: widget.bloc.updatePassword,
       onEditingComplete: _submit,
     );
-  }
-
-  /*TextField _buildPasswordTextField(SignInModel model) {
-    return TextField(
-      controller: _passwordController,
-      focusNode: _passwordFocusNode,
-      decoration: InputDecoration(
-        labelText: 'Password',
-        errorText: model.passwordErrorText,
-        enabled: model.isLoading == false,
-      ),
-      obscureText: true,
-      textInputAction: TextInputAction.done,
-      onChanged: widget.bloc.updatePassword,
-      onEditingComplete: _submit,
-    );
-  }
-  
-
-  TextField _buildEmailTextField(SignInModel model) {
-    return TextField(
-      controller: _emailController,
-      focusNode: _emailFocusNode,
-      decoration: InputDecoration(
-        labelText: 'Email',
-        hintText: 'test@test.com',
-        errorText: model.emailErrorText,
-        enabled: model.isLoading == false,
-      ),
-      autocorrect: false,
-      keyboardType: TextInputType.emailAddress,
-      textInputAction: TextInputAction.next,
-      onChanged: widget.bloc.updateEmail,
-      onEditingComplete: () => _emailEditingComplete(model),
-    );
-  }*/
-
-  _onLoginButtonPressed(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            fullscreenDialog: true,
-            builder: (context) {
-              return HomePage();
-            }));
   }
 
   _cliqueIciButton(BuildContext context) {
