@@ -25,7 +25,7 @@ class BodyWelcome extends StatelessWidget {
                 color: Colors.black54),
           ),
           SizedBox(height: size.height * 0.02),
-          SvgPicture.asset("assets/icons/docs.svg", height: size.height * 0.4),
+          SvgPicture.asset("assets/icons/docs_fpo_vf.svg", height: size.height * 0.4),
           SizedBox(height: size.height * 0.05),
           RoundedButton(
               text: 'LOGIN',
@@ -33,7 +33,7 @@ class BodyWelcome extends StatelessWidget {
               textColor: Colors.white,
               onPressed: () => _onLoginButtonPressed(context)),
           RoundedButton(
-            text: 'Information d\'accès',
+            text: "informations d'accès",
             color: kPrimaryLightColor,
             textColor: Colors.black,
             onPressed: () => onInformationButtonPressed(context),

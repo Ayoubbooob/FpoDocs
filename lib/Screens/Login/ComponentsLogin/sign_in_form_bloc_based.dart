@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:gestion_docs_fpo/Common_Components/custom_raised_button.dart';
 import 'package:gestion_docs_fpo/Common_Components/descreptive_table.dart';
 import 'package:gestion_docs_fpo/Common_Components/form_submit_button.dart';
+import 'package:gestion_docs_fpo/Common_Components/platform_alert_dialog.dart';
 import 'package:gestion_docs_fpo/Common_Components/platform_exception_alert_dialog.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_button.dart';
 import 'package:gestion_docs_fpo/Common_Components/rounded_input_field.dart';
@@ -18,6 +19,7 @@ import '../../../constants.dart';
 
 class SignInFormBlocBased extends StatefulWidget {
   final SignInBloc bloc;
+
   SignInFormBlocBased({@required this.bloc});
 
   static Widget create(BuildContext context) {
@@ -53,21 +55,20 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
   void _submit() async {
     try {
       await widget.bloc.submit();
-      //Navigator.pop(context);
-      _onLoginButtonPressed(context);
-      /*Navigator.push(
-          context,
-          MaterialPageRoute(
-              fullscreenDialog: true,
-              builder: (context) {
-                return HomePage();
-              }));*/
-    } on PlatformException catch (e) {
-      PlatformExceptionAlertDialog(
-        title: 'Sign in failed',
-        exception: e,
+      Navigator.pop(context);
+    } catch (e) {
+      PlatformAlertDialog(
+        title: 'Authentification échouée',
+        content: "les informations sont fausses. Ressayer s'il vous plaît",
+        defaultActionText: 'Ok',
       ).show(context);
     }
+    /*on PlatformException catch (e) {
+      PlatformExceptionAlertDialog(
+        title: 'Authentification échouée',
+        exception: e,
+      ).show(context);
+    }*/
   }
 
   void _emailEditingComplete(SignInModel model) {
@@ -95,11 +96,17 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
               textColor: Colors.white,
               onPressed: model.canSubmit ? _submit : null),
           */
-          FormSubmitButton(
-            text: 'S\'authentifier',
-            onPressed: model.canSubmit ? _submit : null,
-            //onPressed: _submit,
-          ),
+          // FormSubmitButton(
+          //   text: 'S\'authentifier',
+          //   onPressed: model.canSubmit ? _submit : null,
+          //   //onPressed: _submit,
+          // ),
+          RoundedButton(
+              text: "S'authentifier",
+              color: kPrimaryColor,
+              textColor: Colors.white,
+              onPressed: model.canSubmit ? _submit : null),
+
           SizedBox(height: size.height * 0.02),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -130,6 +137,12 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
       errorText: model.emailErrorText,
       icon: Icons.email,
       enabled: model.isLoading == false,
+      validator:  (text) {
+        if (text.trim().length == 0) {
+          return 'le champ est vide';}
+        if(!text.contains("@")){return 'email invalid ';}
+        return null;
+      },
       textInputAction: TextInputAction.next,
       onChanged: widget.bloc.updateEmail,
       onEditingComplete: () => _emailEditingComplete(model),
@@ -142,11 +155,11 @@ class _SignInFormBlocBasedState extends State<SignInFormBlocBased> {
       focusNode: _passwordFocusNode,
       errorText: model.passwordErrorText,
       enabled: model.isLoading == false,
-      textInputAction: TextInputAction.done,
       onChanged: widget.bloc.updatePassword,
       onEditingComplete: _submit,
     );
   }
+
   /*TextField _buildPasswordTextField(SignInModel model) {
     return TextField(
       controller: _passwordController,

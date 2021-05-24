@@ -45,7 +45,7 @@ class PlatformAlertDialog extends PlatformWidget {
   Widget buildMaterialWidget(BuildContext context) {
     return AlertDialog(
       title: Text(title),
-      content: Text(content),
+       content: Text(content),
       actions: _buildActions(context),
     );
   }
@@ -72,6 +72,7 @@ class PlatformAlertDialog extends PlatformWidget {
 
 class PlatformAlertDialogAction extends PlatformWidget {
   PlatformAlertDialogAction({this.child, this.onPressed});
+
   final Widget child;
   final VoidCallback onPressed;
 
@@ -85,7 +86,7 @@ class PlatformAlertDialogAction extends PlatformWidget {
 
   @override
   Widget buildMaterialWidget(BuildContext context) {
-    return TextButton(
+    return FlatButton(
       child: child,
       onPressed: onPressed,
     );

@@ -6,10 +6,12 @@ import 'package:gestion_docs_fpo/services/auth.dart';
 
 class SignInBloc {
   SignInBloc({@required this.auth});
+
   final AuthBase auth;
 
   final StreamController<SignInModel> _modelController =
       StreamController<SignInModel>();
+
   Stream<SignInModel> get modelStream => _modelController.stream;
   SignInModel _model = SignInModel();
 
@@ -28,6 +30,7 @@ class SignInBloc {
   }
 
   void updateEmail(String email) => updateWith(email: email);
+
   void updatePassword(String password) => updateWith(password: password);
 
   void updateWith({

@@ -17,6 +17,7 @@ class CustomRaisedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      height: size.height * 0.1,
       margin: EdgeInsets.symmetric(vertical: 4.0),
       width: size.width * 0.8,
       child: ClipRRect(

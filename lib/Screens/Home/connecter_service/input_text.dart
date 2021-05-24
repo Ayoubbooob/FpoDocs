@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class InputText extends StatelessWidget {
-  final String label;
   final TextInputType keyboardType;
   final bool obscureText;
   final String champ;
@@ -10,10 +9,8 @@ class InputText extends StatelessWidget {
   final void Function(String text) onChanged;
   final void Function(String text) validator;
   final void Function(String text) onsaved;
-
   const InputText(
       {Key key,
-      this.label,
       this.keyboardType,
       this.obscureText = false,
       this.champ,
@@ -26,11 +23,11 @@ class InputText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Si  ize=MediaQuery.of(context).size;
+    final size=MediaQuery.of(context).size;
     // double df=size.height -(size.height *0.1);
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5), //cursorcolor:kPrimaryColor,
-      // width: size.width*2,
+       width: size.width * 0.09,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
@@ -52,7 +49,6 @@ class InputText extends StatelessWidget {
           // border: InputBorder.none,
 
           // suffix: Text("forgot password"),
-          labelText: this.label,
           labelStyle:
               TextStyle(color: Colors.black45, fontWeight: FontWeight.w500),
         ),

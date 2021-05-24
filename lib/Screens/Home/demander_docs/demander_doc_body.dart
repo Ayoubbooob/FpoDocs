@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gestion_docs_fpo/Common_Components/platform_alert_dialog.dart';
+import 'package:gestion_docs_fpo/Common_Components/platform_exception_alert_dialog.dart';
+import 'package:gestion_docs_fpo/Screens/Home/models/demand.dart';
+import 'package:gestion_docs_fpo/services/database.dart';
+import 'package:provider/provider.dart';
 
 class DemanderDocBody extends StatefulWidget {
-  DemanderDocBody({Key key}) : super(key: key);
-
   @override
   _DemanderDocBodyState createState() => _DemanderDocBodyState();
 }
 
 class _DemanderDocBodyState extends State<DemanderDocBody> {
+  final String doc_1 = "Baccalauréat";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,16 +28,25 @@ class _DemanderDocBodyState extends State<DemanderDocBody> {
               children: [
                 Divider(color: Colors.grey),
                 ListTile(
-                  title: Text("Baccalauréat"),
-                  onTap: () {
-                    // final AlertDialog alert=,barrierDismissible: false
+                  title: Text(doc_1),
+                  onTap: () => _createDemand(),
+                    /*// final AlertDialog alert=,barrierDismissible: false
                     // showDialog(context: context, builder: (context) ){
                     final AlertDialog alert = buildAlertDialog("Baccalauréat");
-                    showDialog(
+                    /*showDialog(
                         builder: (context) => alert,
                         context: context,
-                        barrierDismissible: false);
-                  },
+                        barrierDismissible: false);*/
+                    final response = await PlatformAlertDialog(
+                      title: 'Confirmation',
+                      content: 'Vous voulez vraimenet ce document?',
+                      cancelActionText: 'Annuler',
+                      defaultActionText: 'Confirmer',
+                    ).show(context);
+                    if(response == true){
+                      _createDemand(context);
+                    }
+                  },*/
                 ),
                 ListTile(
                   title: Text("Deug"),
@@ -119,4 +133,17 @@ class _DemanderDocBodyState extends State<DemanderDocBody> {
       ),
     );
   }
+
+  Future<void> _createDemand() async {
+    try {
+      final database = Provider.of<Database>(context, listen: false);
+      await database.createDemand(Demand(name: doc_1));
+    } on PlatformException catch (e) {
+      PlatformExceptionAlertDialog(
+        title: 'Operation failed',
+        exception: e,
+      ).show(context);
+    }
+  }
 }
+

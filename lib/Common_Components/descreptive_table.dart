@@ -63,7 +63,7 @@ class DescriptiveTable extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(height: 7.0),
-                Text("CIN",
+                Text("CIN@fpo.com",
                     style: TextStyle(color: Colors.black),
                     textAlign: TextAlign.center),
                 SizedBox(height: 7.0),
@@ -73,7 +73,7 @@ class DescriptiveTable extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(height: 7.0),
-                Text("Code Massar",
+                Text("MASSAR",
                     style: TextStyle(color: Colors.black),
                     textAlign: TextAlign.center),
                 SizedBox(height: 7.0),
@@ -86,7 +86,7 @@ class DescriptiveTable extends StatelessWidget {
               children: [
                 SizedBox(height: 7.0),
                 Row(children: [
-                  Icon(Icons.school),
+                  Icon(Icons.portrait_rounded),
                   //Tab(icon: Icon(MyFlutterApp.chalkboard_teacher)),
                   Container(
                     margin: EdgeInsets.only(left: 6),
@@ -102,7 +102,7 @@ class DescriptiveTable extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(height: 7.0),
-                Text("CIN",
+                Text("CIN@fpo.com",
                     style: TextStyle(color: Colors.black),
                     textAlign: TextAlign.center),
                 SizedBox(height: 7.0),
@@ -112,7 +112,7 @@ class DescriptiveTable extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(height: 7.0),
-                Text("Numéro de SOM",
+                Text("NUMERO DE SOM",
                     style: TextStyle(color: Colors.black),
                     textAlign: TextAlign.center),
                 SizedBox(height: 7.0),

@@ -39,12 +39,11 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.2,
+      height: size.height * 0.11,
       child: TextFieldContainer(
           child: TextField(
         controller: widget.controller,
         focusNode: widget.focusNode,
-        //validator: widget.validator,
         decoration: InputDecoration(
           //hintText: hintText,
           labelText: widget.label,

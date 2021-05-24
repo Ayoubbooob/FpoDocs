@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_docs_fpo/Screens/Login/ComponentsLogin/background_login.dart';
 import 'package:gestion_docs_fpo/Screens/Login/ComponentsLogin/sign_in_form_bloc_based.dart';
+import 'package:gestion_docs_fpo/Screens/Login/ComponentsLogin/sign_in_form_change_notifier.dart';
 
 class BodyLogin extends StatelessWidget {
   //BodyLogin({Key key, @required this.auth}) : super(key: key);
   //final AuthBase auth;
   @override
   Widget build(BuildContext context) {
+    //   return BackgroundLogin(
+    //     child: SingleChildScrollView(
+    //       child: Padding(
+    //         padding: const EdgeInsets.all(16.0),
+    //         child: SignInFormBlocBased.create(context),
+    //       ),
+    //     ),
+    //   );
+    // }
     return BackgroundLogin(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SignInFormBlocBased.create(context),
-        ),
-      ),
-    );
+        child:
+            SingleChildScrollView(child: SignInFormBlocBased.create(context)));
   }
 }
 //SignInForm(auth: auth),

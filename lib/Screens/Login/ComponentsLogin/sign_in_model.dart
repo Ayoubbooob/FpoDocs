@@ -7,6 +7,7 @@ class SignInModel with EmailAndPasswordValidators {
     this.isLoading = false,
     this.submitted = false,
   });
+
   final String email;
   final String password;
   final bool isLoading;

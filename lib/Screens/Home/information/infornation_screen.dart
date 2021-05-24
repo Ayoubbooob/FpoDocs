@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gestion_docs_fpo/services/auth.dart';
 
 import '../../../constants.dart';
 import 'information_body.dart';
 
 class InformationScreen extends StatefulWidget {
-  InformationScreen({Key key}) : super(key: key);
+  final AuthUser user;
+  InformationScreen({Key key, this.user}) : super(key: key);
+  static void show(AuthUser user, BuildContext context)  {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => InformationScreen(user : user),
+        fullscreenDialog: true,
+      ),
+    );
+  }
 
   @override
   _InformationScreenState createState() => _InformationScreenState();

@@ -13,30 +13,30 @@ class _InformationBodyState extends State<InformationBody> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return ListView(children: <Widget>[
-      SvgPicture.asset("assets/icons/msinfo.svg", height: size.height * 0.3),
+      SvgPicture.asset("assets/icons/my_infos_page.svg", height: size.height * 0.3),
       ListTile(
         title: Text("Prénom"),
-        subtitle: Text("Mohamed"),
+        subtitle: Text("  Mohammed"),
       ),
       ListTile(
         title: Text("Nom"),
-        subtitle: Text("Azzaoui"),
+        subtitle: Text("  FPO"),
       ),
       ListTile(
-        title: Text("N_Masser"),
-        subtitle: Text("D130000000"),
+        title: Text("Code Massar"),
+        subtitle: Text("  D11111"),
       ),
       ListTile(
         title: Text("CIN"),
-        subtitle: Text("PA00000"),
+        subtitle: Text("  P11111"),
       ),
       ListTile(
         title: Text("Semestre"),
-        subtitle: Text("S6"),
+        subtitle: Text("  S6"),
       ),
       ListTile(
-        title: Text("Flliere"),
-        subtitle: Text("SMI"),
+        title: Text("Filière"),
+        subtitle: Text("  SMI"),
       ),
     ]);
   }

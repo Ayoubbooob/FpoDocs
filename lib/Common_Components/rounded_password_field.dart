@@ -5,14 +5,13 @@ import '../constants.dart';
 class RoundedPasswordField extends StatefulWidget {
   const RoundedPasswordField({
     Key key,
-    this.onChanged,
     this.controller,
+    this.focusNode,
     this.enabled,
     this.errorText,
     this.label,
-    this.focusNode,
+    this.onChanged,
     this.onEditingComplete,
-    this.textInputAction,
   }) : super(key: key);
 
   final ValueChanged<String> onChanged;
@@ -22,13 +21,14 @@ class RoundedPasswordField extends StatefulWidget {
   final String label;
   final FocusNode focusNode;
   final VoidCallback onEditingComplete;
-  final TextInputAction textInputAction;
+
   @override
   _RoundedPasswordFieldState createState() => _RoundedPasswordFieldState();
 }
 
 class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
   bool showText = true;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

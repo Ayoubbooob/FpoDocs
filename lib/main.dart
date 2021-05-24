@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_docs_fpo/Screens/Login/login_screen.dart';
 import 'package:gestion_docs_fpo/landing_page.dart';
 import 'package:provider/provider.dart';
 
@@ -29,11 +30,17 @@ class MyApp extends StatelessWidget {
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: LandingPage() /*LandingPage() WelcomeScreen(auth: Auth())*/,
+        home: LandingPage() ,
+          initialRoute: '/',
+          routes: {
+            "Login":(context) =>LoginScreen(),
+
+          }/*LandingPage() WelcomeScreen(auth: Auth())*/
         /*routes: {
           "formulaire":(context) =>Formescreen(),
           },*/
       ),
     );
+
   }
 }
