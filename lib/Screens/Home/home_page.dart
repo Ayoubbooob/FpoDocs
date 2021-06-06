@@ -4,6 +4,7 @@ import 'package:gestion_docs_fpo/Common_Components/platform_alert_dialog.dart';
 import 'package:gestion_docs_fpo/Screens/Home/account/account_page.dart';
 import 'package:gestion_docs_fpo/Screens/Home/connecter_service/connecter_servive_page.dart';
 import 'package:gestion_docs_fpo/Screens/Home/demander_docs/demander_doc_screen.dart';
+import 'package:gestion_docs_fpo/Screens/Home/guide/guide_page.dart';
 import 'package:gestion_docs_fpo/Screens/Home/suivre_demande/suivre_screen.dart';
 import 'package:gestion_docs_fpo/services/auth.dart';
 import 'package:provider/provider.dart';
@@ -66,7 +67,7 @@ class HomePage extends StatelessWidget {
             onTap: () => SuivreDocScreen.show(context),
           ),
           ListTile(
-              title: Text("Connecter service"),
+              title: Text("Contacter Service"),
               leading: Icon(Icons.miscellaneous_services_rounded),
               onTap: () => _toContactServiceScreen(context)),
           ListTile(
@@ -74,10 +75,9 @@ class HomePage extends StatelessWidget {
               leading: Icon(Icons.perm_device_information),
               onTap: () => InformationScreen.show(user, context)),
           ListTile(
-            title: Text("Guide"),
-            leading: Icon(Icons.help),
-            onTap: () {},
-          ),
+              title: Text("Guide"),
+              leading: Icon(Icons.help),
+              onTap: () => GuidePage.show(context)),
           ListTile(
             title: Text("Déconnecté"),
             leading: Icon(Icons.exit_to_app_rounded),
@@ -205,14 +205,14 @@ class HomePage extends StatelessWidget {
                                 height: 128,
                               ),
                               Text(
-                                'Connecter service',
+                                'Contacter Service',
                               )
                             ],
                           ),
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => AccountPage.show(user, context),
+                        onTap: () => GuidePage.show(context),
                         child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),

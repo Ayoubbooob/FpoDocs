@@ -15,7 +15,7 @@ class _ConnecterServiceScreenState extends State<ConnecterServiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buidAppBar("Connecter Service"),
+      appBar: buidAppBar("Contacter Service"),
       body: ConnecterServiceForm(),
     );
   }
