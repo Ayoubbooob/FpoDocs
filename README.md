@@ -4,7 +4,7 @@
 A flutter mobile app whose main goal is to facilitate our  university administration tasks in handling documents.
  It allows students, staff, and even graduates request required documents (bachelors, certificates, permits, etc.), without physically visiting the college. 
  
- <img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/FpoDocs.png" width="1920" height="956">
+ <img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/FpoDocs.png" width="316" height="157">
 
 <!-- ![picture alt](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/FpoDocs.png/500x400)  -->
 
