@@ -8,7 +8,7 @@ A flutter mobile app whose main goal is to facilitate our  university administra
 
 ![picture alt](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/FpoDocs.png/500x400) -->
 
-![alt text](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/FpoDocs.png/500x400?raw=true)
+![alt text](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/FpoDocs.png/500x400?raw=true)
 ## About the project 🔗
 
 This project was developed using Flutter for the UI and Firebase backend platform.
