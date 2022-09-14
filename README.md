@@ -42,16 +42,17 @@ What you need to have installed
 
 ##  Screenshots 📱
 ### Splash, Welcome, Login:
-![App Screenshot](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/Splash%20Auth%20screens%20.png/468x300?text=App+Screenshot+Here)
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/Splash%20Auth%20screens.png" width="950" height="400">
 
-### Splash, Welcome, Login:
-![App Screenshot](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/app%20screens.png/468x300?text=App+Screenshot+Here)
 
 ### Dashboard, Request Docs, Tracking Docs Requested:
-![App Screenshot](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/app%20screens.png/468x300?text=App+Screenshot+Here)
+
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/app%20screens.png" width="950" height="400">
 
 ### User profile, Service connect, Form:
-![App Screenshot](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/compteform.png/468x300?text=App+Screenshot+Here)
+
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/compteform.png" width="950" height="400">
+
 
 ##  Graphic Assets ✨
 Home Screen Illustration: <a href = "https://undraw.co/">undraw</a>
