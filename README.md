@@ -4,7 +4,7 @@
 A flutter mobile app whose main goal is to facilitate our  university administration tasks in handling documents.
  It allows students, staff, and even graduates request required documents (bachelors, certificates, permits, etc.), without physically visiting the college. 
  
- <img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/FpoDocs.png" width="950" height="400">
+ <img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/FpoDocs.png" width="864" height="432">
 
 <!-- ![picture alt](https://github.com/Ayoubbooob/FpoDocs/blob/master/readme-images/FpoDocs.png/500x400)  -->
 
@@ -42,16 +42,16 @@ What you need to have installed
 
 ##  Screenshots 📱
 ### Splash, Welcome, Login:
-<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/Splash%20Auth%20screens.png" width="950" height="400">
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/Splash%20Auth%20screens.png" width="864" height="432">
 
 
 ### Dashboard, Request Docs, Tracking Docs Requested:
 
-<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/app%20screens.png" width="950" height="400">
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/app%20screens.png" width="864" height="432">
 
 ### User profile, Service connect, Form:
 
-<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/compteform.png" width="950" height="400">
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/compteform.png" width="864" height="432">
 
 
 ##  Graphic Assets ✨
