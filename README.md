@@ -42,16 +42,16 @@ What you need to have installed
 
 ##  Screenshots 📱
 ### Splash, Welcome, Login:
-<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/Splash%20Auth%20screens.png" width="864" height="432">
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/Splash%20Auth%20screens.png" width="864" height="346">
 
 
 ### Dashboard, Request Docs, Tracking Docs Requested:
 
-<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/app%20screens.png" width="864" height="432">
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/app%20screens.png" width="864" height="346">
 
 ### User profile, Service connect, Form:
 
-<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/compteform.png" width="864" height="432">
+<img src="https://github.com/Ayoubbooob/FpoDocs/blob/master/readme_images/compteform.png" width="864" height="346">
 
 
 ##  Graphic Assets ✨
